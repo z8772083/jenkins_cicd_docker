@@ -43,7 +43,7 @@ spec:
 """
   ) {
 
-node{
+node(label){
    
     stage('Git Clone From Github'){
         git branch: 'master', url: 'https://github.com/z8772083/jenkins_cicd_docker.git'
