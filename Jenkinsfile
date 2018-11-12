@@ -52,7 +52,7 @@ node(label){
     stage('Maven Build'){
         container('maven'){
         sh """
-        mvn -Dskiptest clean package"
+        mvn -Dskiptest clean package
         mkdir -p /data/workspace/${JOB_NAME}/
         rm -f /data/workspace/${JOB_NAME}/*.jar
         cp ${WORKSPACE}/target/*.jar /data/workspace/${JOB_NAME}/
