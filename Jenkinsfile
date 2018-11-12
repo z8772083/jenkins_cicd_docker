@@ -27,7 +27,7 @@ spec:
       mountPath: /data/workspace
       readOnly: false
   - name: helm
-    image: dtzar/helm-kubectl:2.11.0-rc.4
+    image: dtzar/helm-kubectl:2.11.0
     command: ['cat']
     tty: true
   volumes:
