@@ -28,11 +28,11 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - www.tankgo.top
+    - www.tankme.top
   tls: 
-    - secretName: www.tankgo.top
+    - secretName: www.tankme.top
       hosts:
-        - www.tankgo.top
+        - www.tankme.top
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
