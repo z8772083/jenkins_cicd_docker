@@ -61,13 +61,12 @@ node(label){
 }
     stage('Build and Push image'){
         container('docker'){
-withDockerRegistry(credentialsId: 'harbor_hub', url: 'http://harbor.tankme.top') {
         sh """
         docker build -t ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER} .
         docker login ${repo} -u admin -p ${Docker_hub}
         docker push ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER}
         """
-        }
+
  
     }
   } 
