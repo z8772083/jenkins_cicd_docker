@@ -50,6 +50,7 @@ node{
     }
    
     stage('Maven Build'){
+        container('maven'){
         sh """
         mvn -Dskiptest clean package"
         mkdir -p /data/workspace/${JOB_NAME}/
@@ -57,18 +58,22 @@ node{
         cp ${WORKSPACE}/target/*.jar /data/workspace/${JOB_NAME}/
         """
     }
-
+}
     stage('Build and Push image'){
+        container('docker'){
+withDockerRegistry(credentialsId: 'harbor_hub', url: 'harbor.tankme.top') {
         sh """
         docker build -t ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER} .
         docker login ${repo} -u admin -p ${Docker_hub}
         docker push ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER}
         """
+        }
+ 
     }
-   
+  } 
     stage('Deploy'){
     sh """
-    helm --host ${helm_host} upgrade --install --wait  --set image.repository=${repo}/dev/${JOB_NAME},image.tag=${BUILD_NUMBER} nihao2 nihao2
+    helm --host upgrade --install --wait  --set image.repository=${repo}/dev/${JOB_NAME},image.tag=${BUILD_NUMBER} nihao2 nihao2
     """
     }
            
