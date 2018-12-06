@@ -72,7 +72,7 @@ node(label){
     stage('Deploy'){
         container('helm'){
     sh """
-    helm  upgrade --install --wait  --set image.repository=${repo}/dev/${JOB_NAME},image.tag=${BUILD_NUMBER} nihao2 nihao2
+    helm  upgrade --install --wait  --set image.repository=${repo}/ops/${JOB_NAME},image.tag=${BUILD_NUMBER} nihao2 nihao2
     """
     }
     }
