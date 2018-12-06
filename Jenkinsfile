@@ -27,7 +27,7 @@ spec:
       mountPath: /data/workspace
       readOnly: false
   - name: helm
-    image: z8772083/helm:v2.11.0-rc.4
+    image: z8772083/helm:v2.12.0-rc.1
     command: ['cat']
     tty: true
   volumes:
