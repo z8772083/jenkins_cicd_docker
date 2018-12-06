@@ -61,7 +61,7 @@ node(label){
 }
     stage('Build and Push image'){
         container('docker'){
-        withDockerRegistry(credentialsId: '9f63989b-b75d-4943-be02-93eba548ce9b', url: 'harbor.k8sops.com') {
+        withDockerRegistry(credentialsId: '9f63989b-b75d-4943-be02-93eba548ce9b', url: 'http://harbor.k8sops.com') {
         sh """
         docker build -t ${repo}/ops/${JOB_NAME}:${BUILD_NUMBER} .
          docker push ${repo}/ops/${JOB_NAME}:${BUILD_NUMBER}
