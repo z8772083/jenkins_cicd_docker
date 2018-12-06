@@ -8,7 +8,7 @@ image:
   repository: nginx
   tag: stable
   pullPolicy: IfNotPresent
-  imagepullsecrets: harbor-secret-tankme
+  imagepullsecrets: xf-harbor-ops-user
 
 nameOverride: ""
 fullnameOverride: ""
@@ -26,13 +26,11 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - www.tankme.top
-  tls: 
-    - secretName: www.tankme.top
-      hosts:
-        - www.tankme.top
+    - spring.k8sops.com
+  tls: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
