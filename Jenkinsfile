@@ -63,9 +63,8 @@ node(label){
         container('docker'){
         withDockerRegistry(credentialsId: '9f63989b-b75d-4943-be02-93eba548ce9b', url: 'harbor.k8sops.com') {
         sh """
-        docker build -t ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER} .
-        docker login ${repo} -u admin -p ${Docker_hub}
-        docker push ${repo}/dev/${JOB_NAME}:${BUILD_NUMBER}
+        docker build -t ${repo}/ops/${JOB_NAME}:${BUILD_NUMBER} .
+         docker push ${repo}/ops/${JOB_NAME}:${BUILD_NUMBER}
         """
        }
     }
